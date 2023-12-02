@@ -1,7 +1,8 @@
-// importando el DotEnv
-import dotenv from "dotenv";
+// Importando el DotEnv
+import dotenv from 'dotenv';
 
-// Invocacion a la funcion config de la instancia dotenv
+// Invocacion a la funcion config de
+// la instancia dotenv
 dotenv.config();
 
 console.log(process.env.PORT);
@@ -9,8 +10,13 @@ console.log(process.env.PORT);
 // Creando objetos de configuracion
 const defaultConfig = {
   PORT: process.env.PORT || 3000,
-  IP: process.env.IP || "0.0.0.0",
+  IP: process.env.IP || '0.0.0.0',
+  MAIL_USERNAME: process.env.MAIL_USERNAME,
+  MAIL_PASSWORD: process.env.MAIL_PASSWORD,
+  SMTP_HOST: process.env.SMTP_HOST,
+  SMTP_PORT: process.env.SMTP_PORT,
 };
+
 const devConfig = {
   MONGO_URL: process.env.DEV_DATABASE_URL,
 };
@@ -22,25 +28,23 @@ const testConfig = {
 const prodConfig = {
   MONGO_URL: process.env.PROD_DATABASE_URL,
 };
-// exportar el el obejto de configuracion
-// Crando una funcion selectora
+
+// Creando una función selectora
 function getEnvConfig(env) {
   switch (env) {
-    case "production":
+    case 'production':
       return prodConfig;
-
-    case "development":
+    case 'development':
       return devConfig;
-
-    case "test":
+    case 'test':
       return testConfig;
-
     default:
-      return prodConfig;
+      return devConfig;
   }
 }
+
+// Exportar el Objeto de configuracion
 export default {
-  // spread
   ...defaultConfig,
   ...getEnvConfig(process.env.NODE_ENV),
 };

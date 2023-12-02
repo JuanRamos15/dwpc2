@@ -1,19 +1,19 @@
-// cargando estilos
-// eslint-disable-next-line no-console
+// cargando los estilos
 import './styles/style.css';
-// Mensaje en la Consola
-/* eslint-diable */
-// importando estilos de materialize
+// Importando estilos de Materialize CSS
 import 'materialize-css/dist/css/materialize.css';
-// importando estilos de de materialize
+// Importando scripts de Materialize
 import 'materialize-css/dist/js/materialize';
 // Script para borrar proyecto
 import deleteProject from './domains/project.dashboard';
-/* eslint-enable */
-// inicia scripts de materialize para interactividad
+
+// Inicializando Scripts de Materialize para interactividad
 M.AutoInit();
-// Cargando script en caso de que la URL sea '/project/dashboard'
+
+// Cargando script en caso de que la URL sea '/project'
 if (window.location.pathname === '/project/showDashboard') {
   window.deleteProject = deleteProject;
 }
-console.log('🎉Estilos cargado Correctamente🎉');
+
+// Mensaje en la consola
+console.log('🎉 Estilos cargados correctamente 🎉');
